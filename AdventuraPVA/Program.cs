@@ -46,6 +46,8 @@ namespace AdventuraPVA
             string character;
             string race;
             string raceInfo;
+            string profession;
+            string professionInfo;
             Random hp = new Random();
             int health = hp.Next(25, 50);
             while (true)
@@ -72,7 +74,7 @@ namespace AdventuraPVA
                     C.WriteLine("Neplatný vstup, odpověď musí být buď m/muž nebo ž/žena!");
                 }
                 
-            }
+            } //Sex
 
             while (true)
             {
@@ -93,7 +95,7 @@ namespace AdventuraPVA
                 {
                     C.WriteLine("Tím pádem...");
                 }
-            }
+            } //Name
             C.WriteLine();
             while (true)
             {
@@ -157,6 +159,51 @@ namespace AdventuraPVA
                     C.WriteLine("Neplatný vstup, zkus to znovu!");
                 }
 
+            } //Race
+            C.WriteLine();
+            while (true)
+            {
+                TW("A co takhle povolání! Pojďme si vybrat.");
+                C.WriteLine();
+                TW("1. - Bojovník");
+                C.WriteLine();
+                TW("2. - Čaroděj");
+                C.WriteLine();
+                TW("3. - Druid");
+                C.WriteLine();
+                TW("4. - Lovec");
+                C.WriteLine();
+                C.WriteLine("Takže vaše volba?");
+                profession = C.ReadLine().ToLower();
+
+                if (profession == "1" || profession == "bojovník" || profession == "bojovnik")
+                {
+                    profession = "1";
+                    professionInfo = "Bojovník";
+                    break;
+                }
+                else if (profession == "2" || profession == "čaroděj" || profession == "carodej")
+                {
+                    profession = "2";
+                    professionInfo = "Čaroděj";
+                    break;
+                }
+                else if (profession == "3" || profession == "druid")
+                {
+                    profession = "3";
+                    professionInfo = "Druid";
+                    break;
+                }
+                else if (profession == "4" || profession == "lovec")
+                {
+                    profession = "4";
+                    professionInfo = "Lovec";
+                    break;
+                }
+                else
+                {
+                    
+                }
             }
             C.WriteLine("Pro pokračování, stiskněte enter");
             C.ReadLine();
@@ -167,12 +214,20 @@ namespace AdventuraPVA
             C.WriteLine();
             TW("Vaše jméno: " + character);
             C.WriteLine();
-            TW("Vaše vaše rasa: " + raceInfo);
+            TW("Vaše rasa: " + raceInfo);
+            C.WriteLine();
+            TW("Vaše povolání: " + professionInfo);
             C.WriteLine();
             TW("Vaše výše zdraví: " + health);
             C.WriteLine();
             C.ResetColor();
             C.ReadKey();
+            storyIntro();
+        }
+
+        public static void storyIntro()
+        {
+            
         }
     }
 }
