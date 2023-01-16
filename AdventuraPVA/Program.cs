@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using C = System.Console;
+using static System.Console;
 
 
 namespace AdventuraPVA
@@ -26,7 +27,13 @@ namespace AdventuraPVA
             C.SetCursorPosition((Console.WindowWidth - enter.Length) / 2, Console.CursorTop);
             C.WriteLine(enter);
             C.ReadKey();
+            SizeOfScreen();
             gameIntro();
+        }
+        
+        private static void SizeOfScreen()
+        {
+            Console.SetWindowSize(200, 50);
         }
 
         public static void TW(string message)
@@ -64,14 +71,16 @@ namespace AdventuraPVA
                 }
                 else if (sex == "ž" || sex == "žena")
                 {
-                    C.WriteLine("Žena");
                     sex = "ž";
                     sexInfo = "Žena";
                     break;
                 }
                 else
                 {
+                    ForegroundColor = ConsoleColor.Red;
                     C.WriteLine("Neplatný vstup, odpověď musí být buď m/muž nebo ž/žena!");
+                    System.Threading.Thread.Sleep(2000);
+                    ResetColor();
                 }
                 
             } //Sex
@@ -156,7 +165,10 @@ namespace AdventuraPVA
                 }
                 else
                 {
+                    ForegroundColor = ConsoleColor.Red;
                     C.WriteLine("Neplatný vstup, zkus to znovu!");
+                    System.Threading.Thread.Sleep(2000);
+                    ResetColor();
                 }
 
             } //Race
@@ -165,14 +177,19 @@ namespace AdventuraPVA
             {
                 TW("A co takhle povolání! Pojďme si vybrat.");
                 C.WriteLine();
+                ForegroundColor = ConsoleColor.Blue;
                 TW("1. - Bojovník");
                 C.WriteLine();
+                ForegroundColor = ConsoleColor.DarkBlue;
                 TW("2. - Čaroděj");
                 C.WriteLine();
+                ForegroundColor = ConsoleColor.DarkGreen;
                 TW("3. - Druid");
                 C.WriteLine();
+                ForegroundColor = ConsoleColor.Green;
                 TW("4. - Lovec");
                 C.WriteLine();
+                ResetColor();
                 C.WriteLine("Takže vaše volba?");
                 profession = C.ReadLine().ToLower();
 
@@ -202,7 +219,10 @@ namespace AdventuraPVA
                 }
                 else
                 {
-                    
+                    ForegroundColor = ConsoleColor.Red;
+                    WriteLine("Neplatný vstup, zkus to znovu");
+                    System.Threading.Thread.Sleep(2000);
+                    ResetColor();
                 }
             }
             C.WriteLine("Pro pokračování, stiskněte enter");
@@ -229,6 +249,35 @@ namespace AdventuraPVA
 
         public static void storyIntro()
         {
+            SizeOfScreen();
+            //nazev to chce
+            
+            
+            /*TW("Trojice lovců pokladů přišla do haly cechu dobrodruhů. Rytíř tiefling Zhack, elfský čaroděj Har a lidská klerička Ilia se vrátili z neúspěšné mise. Z jednoduchého úkolu vyčištění pyramidy, kde měli být mocné artefakty, se stala téměř sebevražedná mise. Osm párů nohou vešlo, tři páry vyšli a táhli s sebou jeden pár. Před pyramidou je nyní malá kamená hrouda, málokdo ví koho ukrývá.");
+            WriteLine();
+            TW("Ale to je teď už jedno, už nechali truchlení po opilecké a sebelitující noci. ");
+            WriteLine();
+            ForegroundColor = ConsoleColor.Yellow;
+            TW("*Áaaa, tady jste!* "); 
+            ResetColor();
+            TW("ozvala se mladá trpaslice za pultem");
+            WriteLine();
+            ForegroundColor = ConsoleColor.Yellow;
+            TW("*Vaší ztráty je nám líto, ale minimální počet členů pro družinu jsou čtyři. Dokud nebudete v minimálním počtu, nemůžeme vám dát další úkol.*");
+            ResetColor();
+            WriteLine();
+            TW("Po této zprávě zbledli tváře všem třem dobrodruhům");
+            WriteLine();*/
+            ForegroundColor = ConsoleColor.Cyan; 
+            TW("*Nemůžeme si dovolit čekat, už teď nemáme na přespání a to je cech nejlevnější...* ");
+            ResetColor();
+            TW("pošeptal Har svým společníkům.");
+            WriteLine();
+            TW("Když šlo o myšlení, tak byl druhý nejlepší, první byl starý kouzelník Opus Magnus. Všichni chvíli stáli a vzpomínali na něj a Har se rděl, že to řek tak rychle.");
+            WriteLine();
+            Thread.Sleep(2000);
+            WriteLine();
+            TW("Trpaslice Jörna vycítila napjetí a rozhlédla se po hale kde odpočivali a popíjeli jiní dobrodruzi.");
             
         }
     }
