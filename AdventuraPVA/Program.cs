@@ -222,6 +222,8 @@ namespace AdventuraPVA
             C.WriteLine();
             C.ResetColor();
             C.ReadKey();
+            System.Threading.Thread.Sleep(5000);
+            C.Clear();
             storyIntro();
         }
 
