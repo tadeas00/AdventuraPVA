@@ -45,14 +45,14 @@ namespace AdventuraPVA
             }
         }
 
-        public static string sex;
-        public static string sexInfo;
-        public static string character;
-        public static string race;
-        public static string raceInfo;
-        public static string profession;
-        public static string professionInfo;
-        public static int health;
+        public static string sex = "m";
+        public static string sexInfo = "Muž";
+        public static string characterName = "Pepa";
+        public static string race = "1";
+        public static string raceInfo = "člověk";
+        public static string profession = "1";
+        public static string professionInfo = "bojovník";
+        public static int health = 40;
         
 
         public static void gameIntro()
@@ -91,10 +91,10 @@ namespace AdventuraPVA
             {
                 TW("Napište jméno vašeho charakteru!");
                 C.WriteLine();
-                character = C.ReadLine();
-                TW("Ahhh, "+ character + ", jméno tvé.");
+                characterName = C.ReadLine();
+                TW("Ahhh, "+ characterName + ", jméno tvé.");
                 C.WriteLine();
-                C.WriteLine("Opravdu si přejete se jmenovat " + character + " ?");
+                C.WriteLine("Opravdu si přejete se jmenovat " + characterName + " ?");
                 string nameChar = C.ReadLine().ToLower();
 
                 if (nameChar == "a" || nameChar == "ano" || string.IsNullOrEmpty(nameChar))
@@ -123,35 +123,64 @@ namespace AdventuraPVA
                 {
                     TW("Vybral sis Člověka. Díky tomuto výběru budeš mít lepší schopnost boje s mečem a větší šanci na úspěch při přesvědčování!");
                     race = "1";
-                    raceInfo = "Člověk"; WriteLine();
+                    raceInfo = "člověk";
+                    WriteLine();
                     break;
                 }
                 else if (race == "2" || race == "elf")
                 {
                     TW("Vybral sis Elfa. Díky tomuto výběru budeš mít lepší schopnost boje s lukem a lepší obratnost!"); WriteLine();
                     race = "2";
-                    raceInfo = "Elf";
+                    if (sex == "m")
+                    {
+                        raceInfo = "Elf";  
+                    }
+                    else
+                    {
+                        raceInfo = "Elfka";
+                    }
                     break;
                 }
                 else if (race == "3" || race == "trpaslík" || race == "trpaslik")
                 {
                     TW("Vybral sis Trpaslíka. Díky tomuto výběru budeš lépe bojovat na blízko s nožem a máš lepší odolnost vůči zraněním!"); WriteLine();
                     race = "3";
-                    raceInfo = "Trpaslík";
+                    if (sex == "m")        
+                    {                      
+                        raceInfo = "trpaslík";  
+                    }                      
+                    else                   
+                    {                      
+                        raceInfo = "trpaslice";
+                    }                      
                     break;
                 }
                 else if (race == "4" || race == "půlork" || race == "pulork")
                 {
                     TW("Vybral sis Půlorka. Díky tomuto výběru budeš mít větší sílu a odolnost!"); WriteLine();
                     race = "4";
-                    raceInfo = "Půlork";
+                    if (sex == "m")        
+                    {                      
+                        raceInfo = "půlork";  
+                    }                      
+                    else                   
+                    {                      
+                        raceInfo = "půlorčice";
+                    }                      
                     break;
                 }
                 else if (race == "5" || race == "gnóm" || race == "gnom")
                 {
                     TW("Vybral sis Gnóma. Díky tomuto výběru budeš mít větší odolnost a inteligenci!"); WriteLine();
                     race = "5";
-                    raceInfo = "Gnóm";
+                    if (sex == "m")        
+                    {                      
+                        raceInfo = "Gnóm";  
+                    }                      
+                    else                   
+                    {                      
+                        raceInfo = "Gnómka";
+                    }                      
                     break;
                 }
                 else
@@ -182,25 +211,46 @@ namespace AdventuraPVA
                 if (profession == "1" || profession == "bojovník" || profession == "bojovnik")
                 {
                     profession = "1";
-                    professionInfo = "Bojovník";
+                    professionInfo = "bojovník";
                     break;
                 }
                 else if (profession == "2" || profession == "čaroděj" || profession == "carodej")
                 {
                     profession = "2";
-                    professionInfo = "Čaroděj";
+                    if (sex == "m")
+                    {
+                        professionInfo = "čaroděj";
+                    }
+                    else
+                    {
+                        professionInfo = "čarodějka";
+                    }
                     break;
                 }
                 else if (profession == "3" || profession == "druid")
                 {
                     profession = "3";
-                    professionInfo = "Druid";
+                    if (sex == "m")
+                    {
+                        professionInfo = "druid";  
+                    }
+                    else
+                    {
+                        professionInfo = "druidka";
+                    }
                     break;
                 }
                 else if (profession == "4" || profession == "lovec")
                 {
                     profession = "4";
-                    professionInfo = "Lovec";
+                    if (sex == "m") 
+                    {
+                        professionInfo = "lovec";
+                    }
+                    else
+                    {
+                        professionInfo = "lovkyně";
+                    }
                     break;
                 }
                 else
@@ -217,7 +267,7 @@ namespace AdventuraPVA
             C.WriteLine("Shrnutí vaší postavy");
             C.ForegroundColor = ConsoleColor.Yellow;
             TW("Vaše pohlaví: " + sexInfo); WriteLine();
-            TW("Vaše jméno: " + character); WriteLine();
+            TW("Vaše jméno: " + characterName); WriteLine();
             TW("Vaše rasa: " + raceInfo); WriteLine();
             TW("Vaše povolání: " + professionInfo); WriteLine();
             TW("Vaše výše zdraví: " + health); WriteLine();
@@ -234,14 +284,14 @@ namespace AdventuraPVA
             //nazev to chce
             
             
-            /*TW("Trojice lovců pokladů přišla do haly cechu dobrodruhů. Rytíř tiefling Zhack, elfský čaroděj Har a lidská klerička Ilia se vrátili z neúspěšné mise. Z jednoduchého úkolu vyčištění pyramidy, kde měli být mocné artefakty, se stala téměř sebevražedná mise. Osm párů nohou vešlo, tři páry vyšli a táhli s sebou jeden pár. Před pyramidou je nyní malá kamená hrouda, málokdo ví koho ukrývá."); WriteLine();
+            TW("Trojice lovců pokladů přišla do haly cechu dobrodruhů. Rytíř tiefling Zhack, elfský čaroděj Har a lidská klerička Ilia se vrátili z neúspěšné mise. Z jednoduchého úkolu vyčištění pyramidy, kde měli být mocné artefakty, se stala téměř sebevražedná mise. Osm párů nohou vešlo, tři páry vyšli a táhli s sebou jeden pár. Před pyramidou je nyní malá kamená hrouda, málokdo ví koho ukrývá."); WriteLine();
             TW("Ale to je teď už jedno, už nechali truchlení po opilecké a sebelitující noci. "); WriteLine();
             ForegroundColor = ConsoleColor.Yellow;
             TW("*Áaaa, tady jste!* "); ResetColor();
             TW("ozvala se mladá trpaslice za pultem"); WriteLine();
             ForegroundColor = ConsoleColor.Yellow;
             TW("*Vaší ztráty je nám líto, ale minimální počet členů pro družinu jsou čtyři. Dokud nebudete v minimálním počtu, nemůžeme vám dát další úkol.*"); ResetColor(); WriteLine();
-            TW("Po této zprávě zbledli tváře všem třem dobrodruhům");
+            TW("Po této zprávě zbledli tváře všem třem dobrodruhům.");
             WriteLine();
             ForegroundColor = ConsoleColor.Cyan; 
             TW("*Nemůžeme si dovolit čekat, už teď nemáme na přespání a to je cech nejlevnější...* ");
@@ -256,17 +306,17 @@ namespace AdventuraPVA
             TW((sex == "m") ? "*Uhmm... támhle ten v plášti! Je sám a má dlouholeté zkušenosti.* " : "*Uhmm... tamhle ta v plášti! Je sama a má dlouholeté zkušenosti.* "); ResetColor();
             TW("řekla."); WriteLine();
             ForegroundColor = ConsoleColor.Blue;
-            TW((sex == "m") ? "*Tak proč je sám!* " : "*Tak proč je sama!* "); ResetColor(); TW("skoro vyhrkl Zhack."); WriteLine();
+            TW((sex == "m") ? "*Tak proč je sám!* " : "*Tak proč je sama!* "); ResetColor(); TW("skoro vyhrkl Zhack."); WriteLine();Thread.Sleep(2000); 
             ForegroundColor = ConsoleColor.Yellow;
             TW((sex == "m") ? "*Je temperamentní a jeho družina ho, jak to říci slušně, požádala o vystoupení ze skupiny.* " : "*Je temperamentní a její družina jí, jak to říci slušně, požádala o vystoupení ze skupiny.* "); ResetColor();
-            TW("odpověděla úzkostlivě cechovní úřednice a podívala se jestli jí slyšela."); WriteLine();
+            TW("odpověděla úzkostlivě cechovní úřednice a podívala se jestli jí slyšela."); WriteLine();Thread.Sleep(1500); 
             ForegroundColor = ConsoleColor.Magenta;
             TW((sex == "m") ? "*Vyhodili ho.* " : "*Vyhodili ji.* "); ResetColor();
             TW((sex == "m") ? "povzdechla si Ilia a pohlédla schovívavě k němu." : "povzdechla si Ilia a pohlédla schovívavě k ní."); WriteLine();
             TW("Cuknutí hlavy prozradilo, že je slyší. "); TW((sex == "m") ? "Nenápadně si usrkl z korbelu a podíval se na ně. Všichni čtyři na něj zírali" : "Nenápadně si usrkla z korbelu a podívala se na ně. Všichni čtyři na ní zírali."); WriteLine();
             TW((sex == "m") ? "Málem všechno vyprskl a zakašlal se. Zhack přišel k němu a popácal ho po zádech." : "Málem všechno vyprskla a zakašlala se. Zhack přišel k ní a popácal jí po zádech."); WriteLine();
             ForegroundColor = ConsoleColor.Blue; TW("*Nechceš někam vyrazit a vydělat balík peněz?* "); ResetColor(); TW("řekl přijemným hlasem jakoby mluvil s dítětem."); WriteLine(); WriteLine();
-            Thread.Sleep(2000);*/
+            Thread.Sleep(2000);
             while (true)
             {
                 string one = "Když mě...nenecháte ve štychu tak jo.";
@@ -301,7 +351,22 @@ namespace AdventuraPVA
                 }
             }
             ResetColor();
-            TW((sex == "m") ? " řekl skřipavým hlasem prokládaný kašlem." : "řekla skřipavým hlasem prokládaný kašlem.");
+            TW((sex == "m") ? " řekl skřipavým hlasem prokládaný kašlem." : "řekla skřipavým hlasem prokládaný kašlem."); WriteLine();
+            ForegroundColor = ConsoleColor.Green;
+            TW("*Jsem "+ professionInfo + " " + characterName + " a jak jste si mohli už povšimnout, jsem " + raceInfo + ", předem voznamuju že mi jde hlavně o prachy a dobrodružství.* "); ResetColor(); TW((sex == "m") ? "s těmito slovy přejel všechny své nové společníky." : "s těmito slovy přejela všechny své nové společníky"); WriteLine();
+            Thread.Sleep(1500); 
+            ForegroundColor = ConsoleColor.Cyan; TW("*Budeme na to brát ohled.* "); ResetColor(); TW("odeskl Har trochu nevraživě"); WriteLine();
+            Thread.Sleep(1500); 
+            ForegroundColor = ConsoleColor.Green; TW("*Tak kam vyrazíme?* "); ResetColor(); TW((sex == "m") ? "uzavřel poznávání " + characterName + ".": "uzavřela poznávání " + characterName + ".");
+            Thread.Sleep(3000);  WriteLine();
+            WriteLine("Pro pokračování stiskněte Enter!");
+            ReadKey();
+            storyN1();
+        }
+
+        public static void storyN1()
+        {
+               Clear();
         }
     }
 }
